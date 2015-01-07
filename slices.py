@@ -31,6 +31,25 @@ def delete_from_to(p_from, p_to, lst):
     lst[p_from:p_to] = []
 
 
+def delete_each(order, lst):
+    """ Удалить элементы последовательности с шагом order """
+    del lst[::order]
+
+
+def reverse(lst):
+    """ Отразить список (сменить порядок следования элементов на обратный) """
+    lst[:] = lst[::-1]
+
+
+def select_each(order, lst):
+    """
+    Выбрать элементы последовательности с шагом order
+    :param order: int
+    :return: list
+    """
+    return lst[::order]
+
+
 if __name__ == '__main__':
     sh_copy = shallow_copy(EXAMPLE_LIST)
     sh_copy[1] = 4
@@ -49,3 +68,11 @@ if __name__ == '__main__':
 
     delete_from_to(3, 6, sh_copy)
     print('delete_from_to', sh_copy)
+
+    reverse(sh_copy)
+    print('reverse', sh_copy)
+
+    print('select_each', select_each(2, sh_copy))
+
+    delete_each(2, sh_copy)
+    print('delete_each', sh_copy)
